@@ -1,4 +1,3 @@
-import 'package:conversor/modules/conversor/controllers/conversor_controller.dart';
 import 'package:conversor/modules/conversor/pages/page_conversor.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +11,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Home(),
+      home: const Home(),
       theme: ThemeData(
         hintColor: Colors.amber,
         primaryColor: Colors.white,

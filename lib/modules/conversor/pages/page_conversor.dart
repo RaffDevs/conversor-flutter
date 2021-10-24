@@ -13,12 +13,62 @@ class ConversorPage extends StatefulWidget {
 
 class _ConversorPageState extends State<ConversorPage> {
   final conversorController = ConversorController();
+  final realController = TextEditingController();
+  final dolarController = TextEditingController();
+  final euroController = TextEditingController();
+
   double dolar = 0.0;
   double euro = 0.0;
 
   getData() async {
     final data = await conversorController.getData();
+
     return data;
+  }
+
+  _clearAll() {
+    realController.clear();
+    dolarController.clear();
+    euroController.clear();
+  }
+
+  _onRealChange(String text) {
+    if (text.isEmpty) {
+      _clearAll();
+
+      return;
+    }
+
+    double real = double.parse(text);
+
+    dolarController.text = (real/dolar).toStringAsFixed(2);
+    euroController.text = (real/euro).toStringAsFixed(2);
+  }
+
+  _onDolarChange(String text) {
+    if (text.isEmpty) {
+      _clearAll();
+
+      return;
+    }
+
+    double dolar = double.parse(text);
+
+    realController.text = (dolar * this.dolar).toStringAsFixed(2);
+    euroController.text = (dolar * this.dolar / euro).toStringAsFixed(2);
+  }
+
+  _onEuroChange(String text) {
+    if (text.isEmpty) {
+      _clearAll();
+
+      return;
+    }
+
+    double euro = double.parse(text);
+
+    realController.text = (euro * this.euro).toStringAsFixed(2);
+    dolarController.text = (euro * this.euro / dolar).toStringAsFixed(2);
   }
 
   @override
@@ -35,14 +85,16 @@ class _ConversorPageState extends State<ConversorPage> {
                 child: GetDataMessage(text: 'Carregando dados...')
               );
             default:
-              if (snapshot.hasError) {
+              if (snapshot.hasError) {   
+                print(snapshot.error);
+
                 return const GetDataMessage(text: 'Erro ao carregar dados!');
               } 
               else {
                 final data = snapshot.data as Map;
                 dolar = data["results"]["currencies"]["USD"]["buy"];
                 euro = data["results"]["currencies"]["EUR"]["buy"];
-
+                
                 return SizedBox(
                   height: double.infinity,
                   child: SingleChildScrollView(
@@ -51,18 +103,30 @@ class _ConversorPageState extends State<ConversorPage> {
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: const [
-                        Icon(
+                      children: [
+                       const  Icon(
                           Icons.monetization_on,
                           size: 150,
                           color: Colors.amber
                         ),
-                        Divider(),
-                        ConversorField(countryCurrency: Currencies.brazil),
-                        Divider(),
-                        ConversorField(countryCurrency: Currencies.usa),
-                        Divider(),
-                        ConversorField(countryCurrency: Currencies.europe)
+                        const Divider(),
+                        ConversorField(
+                          countryCurrency: Currencies.brazil, 
+                          fieldController: realController,
+                          currencyChange: _onRealChange,
+                        ),
+                        const Divider(),
+                        ConversorField(
+                          countryCurrency: Currencies.usa,
+                          fieldController: dolarController,
+                          currencyChange: _onDolarChange,
+                        ),
+                        const Divider(),
+                        ConversorField(
+                          countryCurrency: Currencies.europe,
+                          fieldController: euroController,
+                          currencyChange: _onEuroChange,
+                        )
                         
                       ],
                     ),

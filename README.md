@@ -1,6 +1,8 @@
-# conversor
+# Conversor
 
-A new Flutter project.
+Um conversor de moedas (Real, Dólar, Euro) utilizando a API da HG Brasil.
+
+![Conversor](conversor.png)
 
 ## Getting Started
 

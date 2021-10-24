@@ -5,8 +5,8 @@ Um conversor de moedas (Real, Dólar, Euro) utilizando a API da HG Brasil.
 ![Conversor](conversor.png)
 
 ## Tecnologias
-<span><img src="https://img.shields.io/static/v1?label=Tech&message=React&color=61DAFB&style=for-the-badge&logo=Flutter"/>
-<span><img src="https://img.shields.io/static/v1?label=Lang&message=JavaScript&color=007396&style=for-the-badge&logo=Dart"/> </span>
+<span><img src="https://img.shields.io/static/v1?label=Tech&message=Flutter&color=61DAFB&style=for-the-badge&logo=Flutter"/>
+<span><img src="https://img.shields.io/static/v1?label=Lang&message=Dart&color=007396&style=for-the-badge&logo=Dart"/> </span>
 
 This project is a starting point for a Flutter application.
 

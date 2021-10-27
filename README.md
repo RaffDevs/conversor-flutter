@@ -9,13 +9,13 @@ Um conversor de moedas (Real, Dólar, Euro) utilizando a API da HG Brasil.
 <span><img src="https://img.shields.io/static/v1?label=Lang&message=Dart&color=007396&style=for-the-badge&logo=Dart"/> </span>
 
 ## Setup
-* [Baixe e instale o flutter]
-  * [https://flutter.dev/docs/get-started/install]
-* [Clone este respositorio e dentro da pasta raiz execute ```dart pub get```]
+* Baixe e instale o flutter
+  * https://flutter.dev/docs/get-started/install
+* Clone este respositorio e dentro da pasta raiz execute ```dart pub get```
 
 ## Execução
 
-* [Para executar, utilize o comando ```flutter run lib/main.dart```]
+* Para executar, utilize o comando ```flutter run lib/main.dart```
 
 ## Contato
 rveronezdeveloper@gmail.com
